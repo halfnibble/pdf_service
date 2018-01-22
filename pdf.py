@@ -10,6 +10,7 @@ options = {
     'viewport-size': '1024x768'
 }
 
+
 @app.route('/', methods=['POST'])
 def pdf():
     data = request.get_json()
@@ -18,9 +19,10 @@ def pdf():
     pdf_doc = pdfkit.from_string(str(html), False, options=options)
     response = make_response(pdf_doc)
     response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = 'attachment; filename={0}'.format(
-            filename)
+    disposition = 'attachment; filename={0}'.format(filename)
+    response.headers['Content-Disposition'] = disposition
     return response
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
