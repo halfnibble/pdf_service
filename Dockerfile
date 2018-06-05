@@ -12,7 +12,7 @@ RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkh
 RUN tar xf /tmp/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz -C /tmp
 RUN mv /tmp/wkhtmltox/bin/wkhtmltopdf /usr/bin/wkhtmltopdf
 RUN echo '#!/bin/bash\nxvfb-run -a --server-args="-screen 0, 1024x768x24" \
-    /usr/bin/wkhtmltopdf -q $*' > /usr/bin/wkhtmltopdf.sh
+    /usr/bin/wkhtmltopdf -q "$@"' > /usr/bin/wkhtmltopdf.sh
 RUN chmod a+x /usr/bin/wkhtmltopdf.sh
 RUN ln -s /usr/bin/wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf
 
