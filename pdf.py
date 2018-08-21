@@ -6,8 +6,10 @@ app = Flask(__name__)
 
 default_options = {
     'no-print-media-type': '',
+    'margin-bottom': '15mm',
+    'margin-top': '15mm',
     'page-size': 'letter',
-    'viewport-size': '1024x768'
+    'viewport-size': '1024x768',
 }
 
 
