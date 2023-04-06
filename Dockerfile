@@ -21,15 +21,15 @@ RUN apt-get update && \
     libssl1.1 \
     && \
     case "${TARGETPLATFORM}" in \
-    "linux/amd64") \
-    WKH_BUILD="wkhtmltox_0.12.6.1-2.bullseye_amd64.deb" \
-    ;; \
-    "linux/arm64") \
-    WKH_BUILD="wkhtmltox_0.12.6.1-2.bullseye_arm64.deb" \
-    ;; \
-    *) \
-    echo "Unsupported platform: ${TARGETPLATFORM}" && exit 1 \
-    ;; \
+        "linux/amd64") \
+            WKH_BUILD="wkhtmltox_0.12.6.1-2.bullseye_amd64.deb" \
+        ;; \
+        "linux/arm64") \
+            WKH_BUILD="wkhtmltox_0.12.6.1-2.bullseye_arm64.deb" \
+        ;; \
+        *) \
+            echo "Unsupported platform: ${TARGETPLATFORM}" && exit 1 \
+        ;; \
     esac && \
     curl -L -o /tmp/${WKH_BUILD} https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/${WKH_BUILD} && \
     apt-get install -y --no-install-recommends /tmp/${WKH_BUILD} && \
